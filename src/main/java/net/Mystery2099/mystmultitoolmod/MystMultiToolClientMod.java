@@ -12,7 +12,7 @@ public class MystMultiToolClientMod implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
-        for(MultiToolItem tool : ModItems.getItems()) {
+        for(MultiToolItem tool : ModItems.getItemList()) {
             ModelPredicateProviderRegistry.register(tool, new Identifier("default"), (stack, world, entity, seed) -> (tool.toolMode.contains("default") && config.toolModelAnimated != true) || (!config.dynamicToolAppearance && config.toolModelAnimated != true)  ? 1 : 0);
             ModelPredicateProviderRegistry.register(tool, new Identifier("animated"), (stack, world, entity, seed) -> (tool.toolMode.contains("default") && config.toolModelAnimated) || (!config.dynamicToolAppearance && config.toolModelAnimated) ? 1 : 0);
             ModelPredicateProviderRegistry.register(tool, new Identifier("fighting"), (stack, world, entity, seed) -> tool.toolMode.contains("isSword") && config.dynamicToolAppearance ? 1 : 0);

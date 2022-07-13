@@ -30,7 +30,6 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class MultiToolItem extends MultiToolAbstractItem {
-
     public String toolMode = "default";
 
     public MultiToolItem(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
@@ -101,9 +100,7 @@ public class MultiToolItem extends MultiToolAbstractItem {
         //Hoe functionality
         if (config.pathMaking ? (config.shiftRightClickToTill == playerEntity.isSneaking() && config.tilling) : config.tilling) {
             Pair<Predicate<ItemUsageContext>, Consumer<ItemUsageContext>> pair = TILLING_ACTIONS.get(world.getBlockState(blockPos = context.getBlockPos()).getBlock());
-            if (pair == null) {
-                return ActionResult.PASS;
-            }
+            if (pair == null) return ActionResult.PASS;
             Predicate<ItemUsageContext> predicate = pair.getFirst();
             Consumer<ItemUsageContext> consumer = pair.getSecond();
             if (predicate.test(context)) {

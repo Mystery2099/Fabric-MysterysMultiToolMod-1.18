@@ -24,13 +24,6 @@ public class MystMultiToolMod implements ModInitializer {
 		registerItem("iron_multi_tool", ModItems.IRON_MULTI_TOOL);
 		registerItem("diamond_multi_tool", ModItems.DIAMOND_MULTI_TOOL);
 		registerItem("netherite_multi_tool", ModItems.NETHERITE_MULTI_TOOL);
-		//registerItem("wooden_hammer", ModItems.WOODEN_HAMMER);
-		//registerItem("stone_hammer", ModItems.STONE_HAMMER);
-		//registerItem("golden_hammer", ModItems.GOLDEN_HAMMER);
-		//registerItem("iron_hammer", ModItems.IRON_HAMMER);
-		//registerItem("diamond_hammer", ModItems.DIAMOND_HAMMER);
-		//registerItem("netherite_hammer", ModItems.NETHERITE_HAMMER);
-		//ModItems.registerClass();
 
 		LOGGER.info("Hello Fabric world!");
 	}
