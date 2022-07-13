@@ -10,11 +10,11 @@
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "sources": "https://github.com/Mystery2099/Fabric-MysterysMultiToolMod-1.18"
   },
 
   "license": "MIT",
-  "icon": "assets.mystmultitoolmod.icon.png",
+  "icon": "assets/mystmultitoolmod/textures/item/netherite_hammer.png",
 
   "environment": "*",
   "entrypoints": {
