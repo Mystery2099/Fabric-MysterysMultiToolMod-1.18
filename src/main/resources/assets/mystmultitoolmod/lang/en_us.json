@@ -13,5 +13,5 @@
   "text.autoconfig.mystmultitoolmod.option.stripping": "Strip logs on right-click:",
   "text.autoconfig.mystmultitoolmod.option.tilling": "Till dirt like a hoe:",
   "text.autoconfig.mystmultitoolmod.option.pathMaking": "Create paths from dirt like a shovel:",
-  "text.autoconfig.mystmultitoolmod.option.SwapShiftRightClickAndRightClickFunctions": "Shift+right-click to till/right-click to create a path:"
+  "text.autoconfig.mystmultitoolmod.option.SwapShiftRightClickAndRightClickFunctions": "Invert MultiTool shift+right-click and right-click functionality:"
 }
