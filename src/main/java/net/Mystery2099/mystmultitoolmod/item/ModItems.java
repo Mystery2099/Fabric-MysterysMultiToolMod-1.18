@@ -17,19 +17,19 @@ public class ModItems {
 
     public static final MultiToolItem DIAMOND_MULTI_TOOL = new MultiToolItem(ToolMaterials.DIAMOND, 5.0f, -3.0f, new FabricItemSettings().group(ItemGroup.TOOLS));
 
-    public static final MultiToolItem NETHERITE_MULTI_TOOL = new MultiToolItem(ToolMaterials.NETHERITE, 5.0f, -3.0f, new FabricItemSettings().group(ItemGroup.TOOLS));
+    public static final MultiToolItem NETHERITE_MULTI_TOOL = new MultiToolItem(ToolMaterials.NETHERITE, 5.0f, -3.0f, new FabricItemSettings().group(ItemGroup.TOOLS).fireproof());
 
-    public static final MultiToolItem WOODEN_HAMMER = new MultiToolItem(ToolMaterials.WOOD, 5.0f, -3.0f, new FabricItemSettings().group(ItemGroup.TOOLS));
-
-    public static final MultiToolItem STONE_HAMMER = new MultiToolItem(ToolMaterials.STONE, 5.0f, -3.0f, new FabricItemSettings().group(ItemGroup.TOOLS));
-
-    public static final MultiToolItem GOLDEN_HAMMER = new MultiToolItem(ToolMaterials.GOLD, 5.0f, -3.0f, new FabricItemSettings().group(ItemGroup.TOOLS));
-
-    public static final MultiToolItem IRON_HAMMER = new MultiToolItem(ToolMaterials.IRON, 5.0f, -3.0f, new FabricItemSettings().group(ItemGroup.TOOLS));
-
-    public static final MultiToolItem DIAMOND_HAMMER = new MultiToolItem(ToolMaterials.DIAMOND, 5.0f, -3.0f, new FabricItemSettings().group(ItemGroup.TOOLS));
-
-    public static final MultiToolItem NETHERITE_HAMMER = new MultiToolItem(ToolMaterials.NETHERITE, 5.0f, -3.0f, new FabricItemSettings().group(ItemGroup.TOOLS));
+    //public static final MultiToolItem WOODEN_HAMMER = new MultiToolItem(ToolMaterials.WOOD, 5.0f, -3.0f, new FabricItemSettings().group(ItemGroup.TOOLS));
+    //
+    //public static final MultiToolItem STONE_HAMMER = new MultiToolItem(ToolMaterials.STONE, 5.0f, -3.0f, new FabricItemSettings().group(ItemGroup.TOOLS));
+    //
+    //public static final MultiToolItem GOLDEN_HAMMER = new MultiToolItem(ToolMaterials.GOLD, 5.0f, -3.0f, new FabricItemSettings().group(ItemGroup.TOOLS));
+    //
+    //public static final MultiToolItem IRON_HAMMER = new MultiToolItem(ToolMaterials.IRON, 5.0f, -3.0f, new FabricItemSettings().group(ItemGroup.TOOLS));
+    //
+    //public static final MultiToolItem DIAMOND_HAMMER = new MultiToolItem(ToolMaterials.DIAMOND, 5.0f, -3.0f, new FabricItemSettings().group(ItemGroup.TOOLS));
+    //
+    //public static final MultiToolItem NETHERITE_HAMMER = new MultiToolItem(ToolMaterials.NETHERITE, 5.0f, -3.0f, new FabricItemSettings().group(ItemGroup.TOOLS));
 
 
     public static ArrayList<MultiToolItem> getItems() {
