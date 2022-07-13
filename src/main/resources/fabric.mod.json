@@ -14,7 +14,7 @@
   },
 
   "license": "MIT",
-  "icon": "assets/mystmultitoolmod/textures/item/diamond_multi_tool.png",
+  "icon": "assets.mystmultitoolmod.icon.png",
 
   "environment": "*",
   "entrypoints": {
@@ -28,9 +28,7 @@
       "net.Mystery2099.mystmultitoolmod.config.MystMultiToolConfigMenu"
     ]
   },
-  "mixins": [
-    "mystmultitoolmod.mixins.json"
-  ],
+
 
   "depends": {
     "fabricloader": ">=0.14.6",
