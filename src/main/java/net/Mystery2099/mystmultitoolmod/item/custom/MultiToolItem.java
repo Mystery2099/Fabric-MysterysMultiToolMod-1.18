@@ -98,7 +98,7 @@ public class MultiToolItem extends MultiToolAbstractItem {
             }
         }
         //Hoe functionality
-        if (config.pathMaking ? (config.shiftRightClickToTill == playerEntity.isSneaking() && config.tilling) : config.tilling) {
+        if (config.pathMaking ? (config.SwapShiftRightClickAndRightClickFunctions == playerEntity.isSneaking() && config.tilling) : config.tilling) {
             Pair<Predicate<ItemUsageContext>, Consumer<ItemUsageContext>> pair = TILLING_ACTIONS.get(world.getBlockState(blockPos = context.getBlockPos()).getBlock());
             if (pair == null) return ActionResult.PASS;
             Predicate<ItemUsageContext> predicate = pair.getFirst();

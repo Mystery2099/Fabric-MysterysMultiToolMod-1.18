@@ -13,13 +13,13 @@ public class MystMultiToolClientMod implements ClientModInitializer {
     public void onInitializeClient() {
         ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
         for(MultiToolItem tool : ModItems.getItemList()) {
-            ModelPredicateProviderRegistry.register(tool, new Identifier("default"), (stack, world, entity, seed) -> (tool.toolMode.contains("default") && config.toolModelAnimated != true) || (!config.dynamicToolAppearance && config.toolModelAnimated != true)  ? 1 : 0);
-            ModelPredicateProviderRegistry.register(tool, new Identifier("animated"), (stack, world, entity, seed) -> (tool.toolMode.contains("default") && config.toolModelAnimated) || (!config.dynamicToolAppearance && config.toolModelAnimated) ? 1 : 0);
-            ModelPredicateProviderRegistry.register(tool, new Identifier("fighting"), (stack, world, entity, seed) -> tool.toolMode.contains("isSword") && config.dynamicToolAppearance ? 1 : 0);
-            ModelPredicateProviderRegistry.register(tool, new Identifier("digging"), (stack, world, entity, seed) -> tool.toolMode.contains("isShovel") && config.dynamicToolAppearance ? 1 : 0);
-            ModelPredicateProviderRegistry.register(tool, new Identifier("mining"), (stack, world, entity, seed) -> tool.toolMode.contains("isPickaxe") && config.dynamicToolAppearance ? 1 : 0);
-            ModelPredicateProviderRegistry.register(tool, new Identifier("chopping"), (stack, world, entity, seed) -> tool.toolMode.contains("isAxe") && config.dynamicToolAppearance ? 1 : 0);
-            ModelPredicateProviderRegistry.register(tool, new Identifier("hoeing"), (stack, world, entity, seed) -> tool.toolMode.contains("isHoe") && config.dynamicToolAppearance ? 1 : 0);
+            ModelPredicateProviderRegistry.register(tool, new Identifier("default"), (stack, world, entity, seed) -> (tool.toolMode.contains("default") && config.animatedToolModel != true) || (!config.dynamicToolModel && config.animatedToolModel != true)  ? 1 : 0);
+            ModelPredicateProviderRegistry.register(tool, new Identifier("animated"), (stack, world, entity, seed) -> (tool.toolMode.contains("default") && config.animatedToolModel) || (!config.dynamicToolModel && config.animatedToolModel) ? 1 : 0);
+            ModelPredicateProviderRegistry.register(tool, new Identifier("fighting"), (stack, world, entity, seed) -> tool.toolMode.contains("isSword") && config.dynamicToolModel ? 1 : 0);
+            ModelPredicateProviderRegistry.register(tool, new Identifier("digging"), (stack, world, entity, seed) -> tool.toolMode.contains("isShovel") && config.dynamicToolModel ? 1 : 0);
+            ModelPredicateProviderRegistry.register(tool, new Identifier("mining"), (stack, world, entity, seed) -> tool.toolMode.contains("isPickaxe") && config.dynamicToolModel ? 1 : 0);
+            ModelPredicateProviderRegistry.register(tool, new Identifier("chopping"), (stack, world, entity, seed) -> tool.toolMode.contains("isAxe") && config.dynamicToolModel ? 1 : 0);
+            ModelPredicateProviderRegistry.register(tool, new Identifier("hoeing"), (stack, world, entity, seed) -> tool.toolMode.contains("isHoe") && config.dynamicToolModel ? 1 : 0);
         }
     }
 }
