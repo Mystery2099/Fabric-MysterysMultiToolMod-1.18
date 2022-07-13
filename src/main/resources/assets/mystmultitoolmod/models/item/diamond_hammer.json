@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "mystmultitoolmod:item/diamond_hammer"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "overrides": [
+    {
+      "predicate": {
+        "default": 1
+      },
+      "model": "mystmultitoolmod:item/diamond_hammer"
+    },
+    {
+      "predicate": {
+        "animated": 1
+      },
+      "model": "mystmultitoolmod:item/diamond_multi_tool_animated"
+    },
+    {
+      "predicate": {
+        "fighting": 1
+      },
+      "model": "minecraft:item/diamond_sword"
+    },
+    {
+      "predicate": {
+        "digging": 1
+      },
+      "model": "minecraft:item/diamond_shovel"
+    },
+    {
+      "predicate": {
+        "mining": 1
+      },
+      "model": "minecraft:item/diamond_pickaxe"
+    },
+    {
+      "predicate": {
+        "chopping": 1
+      },
+      "model": "minecraft:item/diamond_axe"
+    },
+    {
+      "predicate": {
+        "hoeing": 1
+      },
+      "model": "minecraft:item/diamond_hoe"
+    }
+  ]
+}

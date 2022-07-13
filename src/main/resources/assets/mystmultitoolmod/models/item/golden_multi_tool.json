@@ -1,0 +1,46 @@
+{
+  "overrides": [
+    {
+      "predicate": {
+        "default": 1
+      },
+      "model": "mystmultitoolmod:item/golden_hammer"
+    },
+    {
+      "predicate": {
+        "animated": 1
+      },
+      "model": "mystmultitoolmod:item/golden_multi_tool_animated"
+    },
+    {
+      "predicate": {
+        "fighting": 1
+      },
+      "model": "minecraft:item/golden_sword"
+    },
+    {
+      "predicate": {
+        "digging": 1
+      },
+      "model": "minecraft:item/golden_shovel"
+    },
+    {
+      "predicate": {
+        "mining": 1
+      },
+      "model": "minecraft:item/golden_pickaxe"
+    },
+    {
+      "predicate": {
+        "chopping": 1
+      },
+      "model": "minecraft:item/golden_axe"
+    },
+    {
+      "predicate": {
+        "hoeing": 1
+      },
+      "model": "minecraft:item/golden_hoe"
+    }
+  ]
+}

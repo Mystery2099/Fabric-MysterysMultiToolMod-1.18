@@ -1,0 +1,46 @@
+{
+  "overrides": [
+    {
+      "predicate": {
+        "default": 1
+      },
+      "model": "mystmultitoolmod:item/iron_hammer"
+    },
+    {
+      "predicate": {
+        "animated": 1
+      },
+      "model": "mystmultitoolmod:item/iron_multi_tool_animated"
+    },
+    {
+      "predicate": {
+        "fighting": 1
+      },
+      "model": "minecraft:item/iron_sword"
+    },
+    {
+      "predicate": {
+        "digging": 1
+      },
+      "model": "minecraft:item/iron_shovel"
+    },
+    {
+      "predicate": {
+        "mining": 1
+      },
+      "model": "minecraft:item/iron_pickaxe"
+    },
+    {
+      "predicate": {
+        "chopping": 1
+      },
+      "model": "minecraft:item/iron_axe"
+    },
+    {
+      "predicate": {
+        "hoeing": 1
+      },
+      "model": "minecraft:item/iron_hoe"
+    }
+  ]
+}
