@@ -103,7 +103,7 @@ public class MultiToolItem extends MiningToolItem {
                 return ActionResult.success(world.isClient);
             }
         }
-        if ((config.shiftRightClickToTill ? playerEntity.isSneaking() : !playerEntity.isSneaking()) && config.tilling) {
+        if (config.pathMaking ? ((config.shiftRightClickToTill ? playerEntity.isSneaking() : !playerEntity.isSneaking()) && config.tilling) : config.tilling) {
             //Hoe functionality
             Pair<Predicate<ItemUsageContext>, Consumer<ItemUsageContext>> pair = TILLING_ACTIONS.get(world.getBlockState(blockPos = context.getBlockPos()).getBlock());
             if (pair == null) {
