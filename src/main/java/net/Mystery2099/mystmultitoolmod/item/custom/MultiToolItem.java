@@ -1,21 +1,20 @@
 package net.Mystery2099.mystmultitoolmod.item.custom;
 
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.util.Pair;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.Mystery2099.mystmultitoolmod.config.ModConfig;
-import net.Mystery2099.mystmultitoolmod.util.ModBlockTags;
 import net.minecraft.advancement.criterion.Criteria;
-import net.minecraft.block.*;
-import net.minecraft.client.Keyboard;
-import net.minecraft.client.input.KeyboardInput;
-import net.minecraft.client.option.KeyBinding;
-import net.minecraft.client.util.GlfwUtil;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.CampfireBlock;
+import net.minecraft.block.Oxidizable;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.HoneycombItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemUsageContext;
+import net.minecraft.item.ToolMaterial;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -25,23 +24,19 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldEvents;
-import org.lwjgl.glfw.GLFW;
 
-import java.util.Map;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public class MultiToolItem extends MiningToolItem {
-    public static final Map<Block, Block> STRIPPED_BLOCKS = new ImmutableMap.Builder<Block, Block>().put(Blocks.OAK_WOOD, Blocks.STRIPPED_OAK_WOOD).put(Blocks.OAK_LOG, Blocks.STRIPPED_OAK_LOG).put(Blocks.DARK_OAK_WOOD, Blocks.STRIPPED_DARK_OAK_WOOD).put(Blocks.DARK_OAK_LOG, Blocks.STRIPPED_DARK_OAK_LOG).put(Blocks.ACACIA_WOOD, Blocks.STRIPPED_ACACIA_WOOD).put(Blocks.ACACIA_LOG, Blocks.STRIPPED_ACACIA_LOG).put(Blocks.BIRCH_WOOD, Blocks.STRIPPED_BIRCH_WOOD).put(Blocks.BIRCH_LOG, Blocks.STRIPPED_BIRCH_LOG).put(Blocks.JUNGLE_WOOD, Blocks.STRIPPED_JUNGLE_WOOD).put(Blocks.JUNGLE_LOG, Blocks.STRIPPED_JUNGLE_LOG).put(Blocks.SPRUCE_WOOD, Blocks.STRIPPED_SPRUCE_WOOD).put(Blocks.SPRUCE_LOG, Blocks.STRIPPED_SPRUCE_LOG).put(Blocks.WARPED_STEM, Blocks.STRIPPED_WARPED_STEM).put(Blocks.WARPED_HYPHAE, Blocks.STRIPPED_WARPED_HYPHAE).put(Blocks.CRIMSON_STEM, Blocks.STRIPPED_CRIMSON_STEM).put(Blocks.CRIMSON_HYPHAE, Blocks.STRIPPED_CRIMSON_HYPHAE).build();
-    public static final Map<Block, BlockState> PATH_STATES = Maps.newHashMap(new ImmutableMap.Builder<Block, BlockState>().put(Blocks.GRASS_BLOCK, Blocks.DIRT_PATH.getDefaultState()).put(Blocks.DIRT, Blocks.DIRT_PATH.getDefaultState()).put(Blocks.PODZOL, Blocks.DIRT_PATH.getDefaultState()).put(Blocks.COARSE_DIRT, Blocks.DIRT_PATH.getDefaultState()).put(Blocks.MYCELIUM, Blocks.DIRT_PATH.getDefaultState()).put(Blocks.ROOTED_DIRT, Blocks.DIRT_PATH.getDefaultState()).build());
-    public static final Map<Block, Pair<Predicate<ItemUsageContext>, Consumer<ItemUsageContext>>> TILLING_ACTIONS = Maps.newHashMap(ImmutableMap.of(Blocks.GRASS_BLOCK, Pair.of(MultiToolItem::canTillFarmland, MultiToolItem.createTillAction(Blocks.FARMLAND.getDefaultState())), Blocks.DIRT_PATH, Pair.of(MultiToolItem::canTillFarmland, MultiToolItem.createTillAction(Blocks.FARMLAND.getDefaultState())), Blocks.DIRT, Pair.of(MultiToolItem::canTillFarmland, MultiToolItem.createTillAction(Blocks.FARMLAND.getDefaultState())), Blocks.COARSE_DIRT, Pair.of(MultiToolItem::canTillFarmland, MultiToolItem.createTillAction(Blocks.DIRT.getDefaultState())), Blocks.ROOTED_DIRT, Pair.of(itemUsageContext -> true, MultiToolItem.createTillAndDropAction(Blocks.DIRT.getDefaultState(), Items.HANGING_ROOTS))));
+public class MultiToolItem extends MultiToolAbstractItem {
 
     public String toolMode = "default";
 
-    public MultiToolItem(ToolMaterial material, float attackDamage, float attackSpeed, Item.Settings settings) {
-        super(attackDamage, attackSpeed, material, ModBlockTags.MULTITOOL_MINEABLE, settings);
+    public MultiToolItem(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
+        super(material, attackDamage, attackSpeed, settings);
     }
+
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
@@ -103,8 +98,8 @@ public class MultiToolItem extends MiningToolItem {
                 return ActionResult.success(world.isClient);
             }
         }
-        if (config.pathMaking ? ((config.shiftRightClickToTill ? playerEntity.isSneaking() : !playerEntity.isSneaking()) && config.tilling) : config.tilling) {
-            //Hoe functionality
+        //Hoe functionality
+        if (config.pathMaking ? (config.shiftRightClickToTill == playerEntity.isSneaking() && config.tilling) : config.tilling) {
             Pair<Predicate<ItemUsageContext>, Consumer<ItemUsageContext>> pair = TILLING_ACTIONS.get(world.getBlockState(blockPos = context.getBlockPos()).getBlock());
             if (pair == null) {
                 return ActionResult.PASS;
@@ -150,7 +145,6 @@ public class MultiToolItem extends MiningToolItem {
                 }
                 return ActionResult.PASS;
             }
-
         }
         return ActionResult.PASS;
     }
@@ -164,30 +158,5 @@ public class MultiToolItem extends MiningToolItem {
     //        return ActionResult.SUCCESS;
     //    });
     //    return toolMode;
-    //}
-
-
-
-    private Optional<BlockState> getStrippedState(BlockState state) {
-        return Optional.ofNullable(STRIPPED_BLOCKS.get(state.getBlock())).map(block -> block.getDefaultState().with(PillarBlock.AXIS, state.get(PillarBlock.AXIS)));
-    }
-    public static Consumer<ItemUsageContext> createTillAction(BlockState result) {
-        return context -> context.getWorld().setBlockState(context.getBlockPos(), result, Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
-    }
-
-    public static Consumer<ItemUsageContext> createTillAndDropAction(BlockState result, ItemConvertible droppedItem) {
-        return context -> {
-            context.getWorld().setBlockState(context.getBlockPos(), result, Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
-            Block.dropStack(context.getWorld(), context.getBlockPos(), context.getSide(), new ItemStack(droppedItem));
-        };
-    }
-
-    public static boolean canTillFarmland(ItemUsageContext context) {
-        return context.getSide() != Direction.DOWN && context.getWorld().getBlockState(context.getBlockPos().up()).isAir();
-    }
-
-    //@Override
-    //public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-    //    if (Screen.hasShiftDown()) tooltip.add(new TranslatableText("item.mystmultitoolmod."))
     //}
 }
