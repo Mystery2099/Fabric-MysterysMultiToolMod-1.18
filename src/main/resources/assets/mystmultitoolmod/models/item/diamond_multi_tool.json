@@ -4,13 +4,13 @@
       "predicate": {
         "default": 1
       },
-      "model": "mystmultitoolmod:item/diamond_hammer"
+      "model": "mystmultitoolmod:item/hammers/diamond_hammer"
     },
     {
       "predicate": {
         "animated": 1
       },
-      "model": "mystmultitoolmod:item/diamond_multi_tool_animated"
+      "model": "mystmultitoolmod:item/animated/diamond_animated_tool"
     },
     {
       "predicate": {

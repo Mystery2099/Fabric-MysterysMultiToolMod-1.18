@@ -4,13 +4,13 @@
       "predicate": {
         "default": 1
       },
-      "model": "mystmultitoolmod:item/wooden_hammer"
+      "model": "mystmultitoolmod:item/hammers/wooden_hammer"
     },
     {
       "predicate": {
         "animated": 1
       },
-      "model": "mystmultitoolmod:item/wooden_multi_tool_animated"
+      "model": "mystmultitoolmod:item/animated/wooden_animated_tool"
     },
     {
       "predicate": {
