@@ -8,6 +8,10 @@ import net.Mystery2099.mystmultitoolmod.config.ModConfig;
 import net.Mystery2099.mystmultitoolmod.util.ModBlockTags;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.*;
+import net.minecraft.client.Keyboard;
+import net.minecraft.client.input.KeyboardInput;
+import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.util.GlfwUtil;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -21,6 +25,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldEvents;
+import org.lwjgl.glfw.GLFW;
 
 import java.util.Map;
 import java.util.Optional;
@@ -61,6 +66,7 @@ public class MultiToolItem extends MiningToolItem {
 
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
+        ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
         World world = context.getWorld();
         BlockPos blockPos = context.getBlockPos();
         PlayerEntity playerEntity = context.getPlayer();
@@ -72,8 +78,7 @@ public class MultiToolItem extends MiningToolItem {
         Optional<BlockState> optional3 = Optional.ofNullable(HoneycombItem.WAXED_TO_UNWAXED_BLOCKS.get().get(blockState.getBlock())).map(block -> block.getStateWithProperties(blockState));
         ItemStack itemStack = context.getStack();
         Optional<BlockState> optional4 = Optional.empty();
-        assert playerEntity != null;
-        if(!playerEntity.isSneaking()) {
+        if (config.stripping) {
             if (optional.isPresent()) {
                 world.playSound(playerEntity, blockPos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0f, 1.0f);
                 optional4 = optional;
@@ -97,7 +102,8 @@ public class MultiToolItem extends MiningToolItem {
                 toolMode = "isAxe";
                 return ActionResult.success(world.isClient);
             }
-
+        }
+        if ((config.shiftRightClickToTill ? playerEntity.isSneaking() : !playerEntity.isSneaking()) && config.tilling) {
             //Hoe functionality
             Pair<Predicate<ItemUsageContext>, Consumer<ItemUsageContext>> pair = TILLING_ACTIONS.get(world.getBlockState(blockPos = context.getBlockPos()).getBlock());
             if (pair == null) {
@@ -118,7 +124,7 @@ public class MultiToolItem extends MiningToolItem {
             }
         }
         //Shovel Functionality
-        else if (playerEntity.isSneaking()) {
+        else if (config.pathMaking) {
             if (context.getSide() != Direction.DOWN) {
                 BlockState blockState2 = PATH_STATES.get(blockState.getBlock());
                 BlockState blockState3 = null;

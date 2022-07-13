@@ -4,5 +4,8 @@
   "item.mystmultitoolmod.golden_multi_tool": "Golden MultiTool",
   "item.mystmultitoolmod.iron_multi_tool": "Iron MultiTool",
   "item.mystmultitoolmod.diamond_multi_tool": "Diamond MultiTool",
-  "item.mystmultitoolmod.netherite_multi_tool": "Netherite MultiTool"
+  "item.mystmultitoolmod.netherite_multi_tool": "Netherite MultiTool",
+  "text.autoconfig.mystmultitoolmod.title": "MultiTool Mod Configuration",
+  "text.autoconfig.mystmultitoolmod.option.toolModelAnimated": "MultiTools appearances loops through the shovel, pickaxe, axe, & hoe textures:",
+  "text.autoconfig.mystmultitoolmod.option.dynamicToolAppearance": "Dynamically change MultiTool Appearance based on what is being punched:"
 }
