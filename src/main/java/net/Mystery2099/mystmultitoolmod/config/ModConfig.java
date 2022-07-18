@@ -27,16 +27,19 @@ public class ModConfig implements ConfigData {
 
     //New Config
     @ConfigEntry.Category("multiToolModel")
-
-    @ConfigEntry.Gui.Tooltip(count = 2)
+    @ConfigEntry.Gui.Tooltip()
     public DefaultToolModel defaultToolModel = DefaultToolModel.HAMMER;
     @ConfigEntry.Category("multiToolModel")
+    @ConfigEntry.Gui.Tooltip()
     public boolean dynamicToolModel = true;
     @ConfigEntry.Category("multiToolFunctionality")
+    @ConfigEntry.Gui.Tooltip(count = 2)
     public ToolControls stripping = ToolControls.BOTH;
     @ConfigEntry.Category("multiToolFunctionality")
+    @ConfigEntry.Gui.Tooltip(count = 2)
     public ToolControls tilling = ToolControls.RIGHT_CLICK;
     @ConfigEntry.Category("multiToolFunctionality")
+    @ConfigEntry.Gui.Tooltip(count = 2)
     public ToolControls flattening = ToolControls.SHIFT_RIGHT_CLICK;
 
     //TO-DO LIST
