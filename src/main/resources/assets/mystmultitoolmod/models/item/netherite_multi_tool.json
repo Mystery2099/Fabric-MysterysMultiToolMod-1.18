@@ -12,25 +12,25 @@
     },
     {
       "predicate": {
-        "digging": 1
+        "shovel": 1
       },
       "model": "minecraft:item/netherite_shovel"
     },
     {
       "predicate": {
-        "mining": 1
+        "pickaxe": 1
       },
       "model": "minecraft:item/netherite_pickaxe"
     },
     {
       "predicate": {
-        "chopping": 1
+        "axe": 1
       },
       "model": "minecraft:item/netherite_axe"
     },
     {
       "predicate": {
-        "hoeing": 1
+        "hoe": 1
       },
       "model": "minecraft:item/netherite_hoe"
     }
