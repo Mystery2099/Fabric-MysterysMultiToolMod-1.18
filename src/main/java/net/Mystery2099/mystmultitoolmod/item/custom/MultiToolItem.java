@@ -75,9 +75,9 @@ public class MultiToolItem extends MultiToolAbstractItem {
         Optional<BlockState> optional3 = Optional.ofNullable(HoneycombItem.WAXED_TO_UNWAXED_BLOCKS.get().get(blockState.getBlock())).map(block -> block.getStateWithProperties(blockState));
         ItemStack itemStack = context.getStack();
         Optional<BlockState> optional4 = Optional.empty();
-        if (config.strippingConfig == ToolControls.BOTH ||
-                (config.strippingConfig == ToolControls.RIGHT_CLICK && !playerEntity.isSneaking()) ||
-                (config.strippingConfig == ToolControls.SHIFT_RIGHT_CLICK && playerEntity.isSneaking())) {
+        if (config.stripping == ToolControls.BOTH ||
+                (config.stripping == ToolControls.RIGHT_CLICK && !playerEntity.isSneaking()) ||
+                (config.stripping == ToolControls.SHIFT_RIGHT_CLICK && playerEntity.isSneaking())) {
             if (optional.isPresent()) {
                 world.playSound(playerEntity, blockPos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0f, 1.0f);
                 optional4 = optional;
@@ -103,9 +103,9 @@ public class MultiToolItem extends MultiToolAbstractItem {
             }
         }
         //Hoe functionality
-        if (config.tillingConfig == ToolControls.BOTH ||
-                (config.tillingConfig == ToolControls.RIGHT_CLICK && !playerEntity.isSneaking()) ||
-                (config.tillingConfig == ToolControls.SHIFT_RIGHT_CLICK && playerEntity.isSneaking())) {
+        if (config.tilling == ToolControls.BOTH ||
+                (config.tilling == ToolControls.RIGHT_CLICK && !playerEntity.isSneaking()) ||
+                (config.tilling == ToolControls.SHIFT_RIGHT_CLICK && playerEntity.isSneaking())) {
             Pair<Predicate<ItemUsageContext>, Consumer<ItemUsageContext>> pair = TILLING_ACTIONS.get(world.getBlockState(blockPos = context.getBlockPos()).getBlock());
             if (pair == null) return ActionResult.PASS;
             Predicate<ItemUsageContext> predicate = pair.getFirst();
@@ -123,9 +123,9 @@ public class MultiToolItem extends MultiToolAbstractItem {
             }
         }
         //Shovel Functionality
-        if (config.flatteningConfig == ToolControls.BOTH ||
-                (config.flatteningConfig == ToolControls.RIGHT_CLICK && !playerEntity.isSneaking()) ||
-                (config.flatteningConfig == ToolControls.SHIFT_RIGHT_CLICK && playerEntity.isSneaking())) {
+        if (config.flattening == ToolControls.BOTH ||
+                (config.flattening == ToolControls.RIGHT_CLICK && !playerEntity.isSneaking()) ||
+                (config.flattening == ToolControls.SHIFT_RIGHT_CLICK && playerEntity.isSneaking())) {
             if (context.getSide() != Direction.DOWN) {
                 BlockState blockState2 = PATH_STATES.get(blockState.getBlock());
                 BlockState blockState3 = null;
