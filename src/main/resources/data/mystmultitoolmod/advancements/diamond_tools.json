@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:diamond_pickaxe"
+    },
+    "title": "Craft Diamond Tools",
+    "description": "Gather diamonds from mining and use them to craft a diamond pickaxe, shovel, axe, and a hoe",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "mystmultitoolmod:iron_tools",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:diamond_shovel",
+              "minecraft:diamond_pickaxe",
+              "minecraft:diamond_axe",
+              "minecraft:diamond_hoe"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "mystmultitoolmod:diamond_multitool"
+    ]
+  }
+}

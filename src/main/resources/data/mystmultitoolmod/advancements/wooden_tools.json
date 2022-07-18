@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:wooden_pickaxe"
+    },
+    "title": "Craft Wooden Tools",
+    "description": "Gather wood from trees and use it to craft a wooden pickaxe, shovel, axe, and a hoe",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "mystmultitoolmod:root",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:wooden_shovel",
+              "minecraft:wooden_pickaxe",
+              "minecraft:wooden_axe",
+              "minecraft:wooden_hoe"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "mystmultitoolmod:wooden_multitool"
+    ]
+  }
+}

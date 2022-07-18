@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "mystmultitoolmod:iron_multi_tool"
+    },
+    "title": "Upgrade to a Iron MultiTool",
+    "description": "Use iron tools to craft a Iron MultiTool!",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "mystmultitoolmod:iron_tools",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mystmultitoolmod:iron_multi_tool"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

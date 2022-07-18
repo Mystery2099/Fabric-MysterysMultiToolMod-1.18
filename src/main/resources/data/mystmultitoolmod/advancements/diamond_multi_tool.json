@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "mystmultitoolmod:diamond_multi_tool"
+    },
+    "title": "Upgrade to a Diamond MultiTool",
+    "description": "Use diamond tools to craft a Diamond MultiTool!",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "mystmultitoolmod:diamond_tools",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mystmultitoolmod:diamond_multi_tool"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

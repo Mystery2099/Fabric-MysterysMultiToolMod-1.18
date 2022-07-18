@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:netherite_pickaxe"
+    },
+    "title": "Craft Netherite Tools",
+    "description": "Craft a netherite pickaxe, shovel, axe, and a hoe",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "mystmultitoolmod:diamond_tools",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:netherite_shovel",
+              "minecraft:netherite_pickaxe",
+              "minecraft:netherite_axe",
+              "minecraft:netherite_hoe"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "mystmultitoolmod:netherite_multitool"
+    ]
+  }
+}

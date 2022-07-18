@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": {
+      "item": "mystmultitoolmod:netherite_multi_tool"
+    },
+    "title": "Mystery's MultiTool Mod!",
+    "description": "The Era of MultiTools has Begun!",
+    "background": "minecraft:textures/block/stone.png",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

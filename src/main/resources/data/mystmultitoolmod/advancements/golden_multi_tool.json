@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "mystmultitoolmod:golden_multi_tool"
+    },
+    "title": "Upgrade to a golden MultiTool",
+    "description": "Use golden tools to craft a Golden MultiTool!",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "mystmultitoolmod:golden_tools",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mystmultitoolmod:golden_multi_tool"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

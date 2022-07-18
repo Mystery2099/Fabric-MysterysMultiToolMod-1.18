@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "mystmultitoolmod:wooden_multi_tool"
+    },
+    "title": "Upgrade to a Wooden MultiTool",
+    "description": "Use wooden tools to craft a Wooden MultiTool!",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "mystmultitoolmod:wooden_tools",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mystmultitoolmod:wooden_multi_tool"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

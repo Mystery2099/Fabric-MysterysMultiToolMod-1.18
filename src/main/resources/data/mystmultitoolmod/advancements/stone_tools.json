@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:stone_pickaxe"
+    },
+    "title": "Craft Stone Tools",
+    "description": "Gather stone from underground and use it to craft a stone pickaxe, shovel, axe, and a hoe",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "mystmultitoolmod:wooden_tools",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:stone_shovel",
+              "minecraft:stone_pickaxe",
+              "minecraft:stone_axe",
+              "minecraft:stone_hoe"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "mystmultitoolmod:stone_multitool"
+    ]
+  }
+}
