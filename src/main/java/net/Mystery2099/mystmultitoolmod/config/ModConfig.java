@@ -4,8 +4,8 @@ import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import net.Mystery2099.mystmultitoolmod.MystMultiToolMod;
-import net.Mystery2099.mystmultitoolmod.util.enums.DefaultToolModel;
-import net.Mystery2099.mystmultitoolmod.util.enums.ToolControls;
+import net.Mystery2099.mystmultitoolmod.config.enums.DefaultToolModel;
+import net.Mystery2099.mystmultitoolmod.config.enums.ToolControls;
 
 @Config(name = MystMultiToolMod.MOD_ID)
 public class ModConfig implements ConfigData {

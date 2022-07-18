@@ -1,4 +1,4 @@
-package net.Mystery2099.mystmultitoolmod.util.enums;
+package net.Mystery2099.mystmultitoolmod.config.enums;
 
 public enum ToolControls {
     RIGHT_CLICK,
