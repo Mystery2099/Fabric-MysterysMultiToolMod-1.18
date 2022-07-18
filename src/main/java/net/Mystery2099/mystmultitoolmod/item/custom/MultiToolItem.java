@@ -20,12 +20,15 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.LiteralText;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldEvents;
 
+import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -33,12 +36,12 @@ import java.util.function.Predicate;
 import static net.minecraft.tag.BlockTags.*;
 
 public class MultiToolItem extends MultiToolAbstractItem {
-    public ToolModes toolMode = ToolModes.DEFAULT;
+
+    private ToolModes toolMode = ToolModes.DEFAULT;
 
     public MultiToolItem(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
         super(material, attackDamage, attackSpeed, settings);
     }
-
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
@@ -46,7 +49,6 @@ public class MultiToolItem extends MultiToolAbstractItem {
         toolMode = ToolModes.DEFAULT;
         return true;
     }
-
 
     @Override
     public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
@@ -59,7 +61,6 @@ public class MultiToolItem extends MultiToolAbstractItem {
         }
         return true;
     }
-
 
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
@@ -92,6 +93,7 @@ public class MultiToolItem extends MultiToolAbstractItem {
             }
             if (optional4.isPresent()) {
                 if (playerEntity instanceof ServerPlayerEntity) {
+                    toolMode = ToolModes.AXE;
                     Criteria.ITEM_USED_ON_BLOCK.trigger((ServerPlayerEntity) playerEntity, blockPos, itemStack);
                 }
                 world.setBlockState(blockPos, optional4.get(), Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
@@ -149,20 +151,15 @@ public class MultiToolItem extends MultiToolAbstractItem {
                     toolMode = ToolModes.SHOVEL;
                     return ActionResult.success(world.isClient);
                 }
+                if (!world.isClient) toolMode = ToolModes.SHOVEL;
                 return ActionResult.PASS;
             }
         }
         return ActionResult.PASS;
     }
 
-    //public String getToolMode() {
-    //    AttackBlockCallback.EVENT.register((player, world1, hand, pos, direction)-> {
-    //        toolMode = (world1.getBlockState(pos).isIn(BlockTags.SHOVEL_MINEABLE)) ? ToolModes.SHOVEL :
-    //                (world1.getBlockState(pos).isIn(BlockTags.PICKAXE_MINEABLE)) ? ToolModes.PICKAXE :
-    //                        (world1.getBlockState(pos).isIn(BlockTags.AXE_MINEABLE)) ? ToolModes.AXE :
-    //                                (world1.getBlockState(pos).isIn(BlockTags.HOE_MINEABLE)) ? ToolModes.HOE : ToolModes.DEFAULT;
-    //        return ActionResult.SUCCESS;
-    //    });
-    //    return toolMode;
-    //}
+    public ToolModes getToolMode() {
+        return toolMode;
+    }
+
 }

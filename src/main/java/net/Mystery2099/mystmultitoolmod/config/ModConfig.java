@@ -28,8 +28,6 @@ public class ModConfig implements ConfigData {
 
     //TO-DO LIST
     //Test on Server
-    //Add advancements
-    //Change Predicate names to tool names
     //Possibly add configurable durability-Lowest is default, highest is 4 times default or give only 2 options which would be 4 times default
     //Possibly add configurable tool attack speed and damage
 }
