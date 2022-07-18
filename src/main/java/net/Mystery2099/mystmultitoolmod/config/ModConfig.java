@@ -33,13 +33,13 @@ public class ModConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip()
     public boolean dynamicToolModel = true;
     @ConfigEntry.Category("multiToolFunctionality")
-    @ConfigEntry.Gui.Tooltip(count = 2)
+    @ConfigEntry.Gui.Tooltip()
     public ToolControls stripping = ToolControls.BOTH;
     @ConfigEntry.Category("multiToolFunctionality")
-    @ConfigEntry.Gui.Tooltip(count = 2)
+    @ConfigEntry.Gui.Tooltip()
     public ToolControls tilling = ToolControls.RIGHT_CLICK;
     @ConfigEntry.Category("multiToolFunctionality")
-    @ConfigEntry.Gui.Tooltip(count = 2)
+    @ConfigEntry.Gui.Tooltip()
     public ToolControls flattening = ToolControls.SHIFT_RIGHT_CLICK;
 
     //TO-DO LIST
