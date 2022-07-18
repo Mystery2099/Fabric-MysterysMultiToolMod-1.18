@@ -6,12 +6,6 @@
   "item.mystmultitoolmod.diamond_multi_tool": "Diamond MultiTool",
   "item.mystmultitoolmod.netherite_multi_tool": "Netherite MultiTool",
   "text.autoconfig.mystmultitoolmod.title": "MultiTool Mod Configuration",
-  "text.autoconfig.mystmultitoolmod.category.multiToolModel": "MultiTool Model",
-  "text.autoconfig.mystmultitoolmod.option.animatedToolModel": "Animated rotation of shovel, pickaxe, axe, and hoe textures:",
-  "text.autoconfig.mystmultitoolmod.option.dynamicToolModel": "Dynamically change MultiTool model:",
-  "text.autoconfig.mystmultitoolmod.category.multiToolFunctionality": "MultiTool Functionality",
-  "text.autoconfig.mystmultitoolmod.option.stripping": "Strip logs on right-click:",
-  "text.autoconfig.mystmultitoolmod.option.tilling": "Till dirt like a hoe:",
-  "text.autoconfig.mystmultitoolmod.option.pathMaking": "Create paths from dirt like a shovel:",
-  "text.autoconfig.mystmultitoolmod.option.SwapShiftRightClickAndRightClickFunctions": "Invert MultiTool shift+right-click and right-click functionality:"
+  "text.autoconfig.mystmultitoolmod.category.multiToolModel": "MultiTool Model Customization",
+  "text.autoconfig.mystmultitoolmod.category.multiToolFunctionality": "MultiTool Functionality Customization"
 }
