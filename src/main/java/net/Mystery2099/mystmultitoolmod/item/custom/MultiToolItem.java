@@ -3,8 +3,8 @@ package net.Mystery2099.mystmultitoolmod.item.custom;
 import com.mojang.datafixers.util.Pair;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.Mystery2099.mystmultitoolmod.config.ModConfig;
-import net.Mystery2099.mystmultitoolmod.util.enums.ToolControls;
-import net.Mystery2099.mystmultitoolmod.util.enums.ToolModes;
+import net.Mystery2099.mystmultitoolmod.config.enums.ToolControls;
+import net.Mystery2099.mystmultitoolmod.config.enums.ToolModes;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -20,7 +20,6 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.tag.BlockTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -76,8 +75,9 @@ public class MultiToolItem extends MultiToolAbstractItem {
         Optional<BlockState> optional3 = Optional.ofNullable(HoneycombItem.WAXED_TO_UNWAXED_BLOCKS.get().get(blockState.getBlock())).map(block -> block.getStateWithProperties(blockState));
         ItemStack itemStack = context.getStack();
         Optional<BlockState> optional4 = Optional.empty();
-        if (config.strippingConfig == ToolControls.BOTH || (config.strippingConfig == ToolControls.RIGHT_CLICK ? !playerEntity.isSneaking() :
-                config.strippingConfig == ToolControls.SHIFT_RIGHT_CLICK ? playerEntity.isSneaking() : false)) {
+        if (config.strippingConfig == ToolControls.BOTH ||
+                (config.strippingConfig == ToolControls.RIGHT_CLICK && !playerEntity.isSneaking()) ||
+                (config.strippingConfig == ToolControls.SHIFT_RIGHT_CLICK && playerEntity.isSneaking())) {
             if (optional.isPresent()) {
                 world.playSound(playerEntity, blockPos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0f, 1.0f);
                 optional4 = optional;
@@ -103,8 +103,9 @@ public class MultiToolItem extends MultiToolAbstractItem {
             }
         }
         //Hoe functionality
-        if (config.tillingConfig == ToolControls.BOTH || (config.tillingConfig == ToolControls.RIGHT_CLICK ? !playerEntity.isSneaking() :
-                config.tillingConfig == ToolControls.SHIFT_RIGHT_CLICK ? playerEntity.isSneaking() : false)) {
+        if (config.tillingConfig == ToolControls.BOTH ||
+                (config.tillingConfig == ToolControls.RIGHT_CLICK && !playerEntity.isSneaking()) ||
+                (config.tillingConfig == ToolControls.SHIFT_RIGHT_CLICK && playerEntity.isSneaking())) {
             Pair<Predicate<ItemUsageContext>, Consumer<ItemUsageContext>> pair = TILLING_ACTIONS.get(world.getBlockState(blockPos = context.getBlockPos()).getBlock());
             if (pair == null) return ActionResult.PASS;
             Predicate<ItemUsageContext> predicate = pair.getFirst();
@@ -122,8 +123,9 @@ public class MultiToolItem extends MultiToolAbstractItem {
             }
         }
         //Shovel Functionality
-        if (config.flatteningConfig == ToolControls.BOTH || (config.flatteningConfig == ToolControls.RIGHT_CLICK ? !playerEntity.isSneaking() :
-                config.flatteningConfig == ToolControls.SHIFT_RIGHT_CLICK ? playerEntity.isSneaking() : false)) {
+        if (config.flatteningConfig == ToolControls.BOTH ||
+                (config.flatteningConfig == ToolControls.RIGHT_CLICK && !playerEntity.isSneaking()) ||
+                (config.flatteningConfig == ToolControls.SHIFT_RIGHT_CLICK && playerEntity.isSneaking())) {
             if (context.getSide() != Direction.DOWN) {
                 BlockState blockState2 = PATH_STATES.get(blockState.getBlock());
                 BlockState blockState3 = null;
