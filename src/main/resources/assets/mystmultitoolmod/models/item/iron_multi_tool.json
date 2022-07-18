@@ -1,22 +1,14 @@
 {
+  "parent": "item/handheld",
+  "textures": {
+    "layer0":"mystmultitoolmod:item/iron_hammer"
+  },
   "overrides": [
-    {
-      "predicate": {
-        "default": 1
-      },
-      "model": "mystmultitoolmod:item/hammers/iron_hammer"
-    },
     {
       "predicate": {
         "animated": 1
       },
       "model": "mystmultitoolmod:item/animated/iron_animated_tool"
-    },
-    {
-      "predicate": {
-        "fighting": 1
-      },
-      "model": "minecraft:item/iron_sword"
     },
     {
       "predicate": {

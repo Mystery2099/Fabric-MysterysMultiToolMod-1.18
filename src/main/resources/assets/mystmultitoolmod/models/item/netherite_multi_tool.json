@@ -1,22 +1,14 @@
 {
+  "parent": "item/handheld",
+  "textures": {
+    "layer0":"mystmultitoolmod:item/netherite_hammer"
+  },
   "overrides": [
-    {
-      "predicate": {
-        "default": 1
-      },
-      "model": "mystmultitoolmod:item/hammers/netherite_hammer"
-    },
     {
       "predicate": {
         "animated": 1
       },
       "model": "mystmultitoolmod:item/animated/netherite_animated_tool"
-    },
-    {
-      "predicate": {
-        "fighting": 1
-      },
-      "model": "minecraft:item/netherite_sword"
     },
     {
       "predicate": {

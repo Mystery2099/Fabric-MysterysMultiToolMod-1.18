@@ -1,22 +1,14 @@
 {
+  "parent": "item/handheld",
+  "textures": {
+    "layer0":"mystmultitoolmod:item/golden_hammer"
+  },
   "overrides": [
-    {
-      "predicate": {
-        "default": 1
-      },
-      "model": "mystmultitoolmod:item/hammers/golden_hammer"
-    },
     {
       "predicate": {
         "animated": 1
       },
       "model": "mystmultitoolmod:item/animated/golden_animated_tool"
-    },
-    {
-      "predicate": {
-        "fighting": 1
-      },
-      "model": "minecraft:item/golden_sword"
     },
     {
       "predicate": {

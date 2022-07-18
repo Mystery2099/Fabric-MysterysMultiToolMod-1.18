@@ -1,22 +1,14 @@
 {
+  "parent": "item/handheld",
+  "textures": {
+    "layer0":"mystmultitoolmod:item/wooden_hammer"
+  },
   "overrides": [
-    {
-      "predicate": {
-        "default": 1
-      },
-      "model": "mystmultitoolmod:item/hammers/wooden_hammer"
-    },
     {
       "predicate": {
         "animated": 1
       },
       "model": "mystmultitoolmod:item/animated/wooden_animated_tool"
-    },
-    {
-      "predicate": {
-        "fighting": 1
-      },
-      "model": "minecraft:item/wooden_sword"
     },
     {
       "predicate": {

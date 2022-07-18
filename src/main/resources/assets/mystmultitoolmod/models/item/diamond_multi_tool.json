@@ -1,22 +1,14 @@
 {
+  "parent": "item/handheld",
+  "textures": {
+    "layer0":"mystmultitoolmod:item/diamond_hammer"
+  },
   "overrides": [
-    {
-      "predicate": {
-        "default": 1
-      },
-      "model": "mystmultitoolmod:item/hammers/diamond_hammer"
-    },
     {
       "predicate": {
         "animated": 1
       },
       "model": "mystmultitoolmod:item/animated/diamond_animated_tool"
-    },
-    {
-      "predicate": {
-        "fighting": 1
-      },
-      "model": "minecraft:item/diamond_sword"
     },
     {
       "predicate": {

@@ -1,4 +1,4 @@
-package net.Mystery2099.mystmultitoolmod.util;
+package net.Mystery2099.mystmultitoolmod.util.tags;
 
 import net.minecraft.block.Block;
 import net.minecraft.tag.TagKey;

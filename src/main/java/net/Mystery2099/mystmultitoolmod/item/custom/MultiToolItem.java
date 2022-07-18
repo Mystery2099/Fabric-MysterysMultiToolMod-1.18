@@ -3,6 +3,8 @@ package net.Mystery2099.mystmultitoolmod.item.custom;
 import com.mojang.datafixers.util.Pair;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.Mystery2099.mystmultitoolmod.config.ModConfig;
+import net.Mystery2099.mystmultitoolmod.util.enums.ToolControls;
+import net.Mystery2099.mystmultitoolmod.util.enums.ToolModes;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -29,8 +31,10 @@ import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
+import static net.minecraft.tag.BlockTags.*;
+
 public class MultiToolItem extends MultiToolAbstractItem {
-    public String toolMode = "default";
+    public ToolModes toolMode = ToolModes.DEFAULT;
 
     public MultiToolItem(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
         super(material, attackDamage, attackSpeed, settings);
@@ -40,17 +44,17 @@ public class MultiToolItem extends MultiToolAbstractItem {
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         stack.damage(2, attacker, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
-        toolMode = "default";
+        toolMode = ToolModes.DEFAULT;
         return true;
     }
 
 
     @Override
     public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
-        toolMode = state.isIn(BlockTags.SHOVEL_MINEABLE) ? "isShovel" :
-                state.isIn(BlockTags.PICKAXE_MINEABLE) ? "isPickaxe" :
-                        state.isIn(BlockTags.AXE_MINEABLE) ? "isAxe" :
-                                state.isIn(BlockTags.HOE_MINEABLE) ? "isHoe" : "default";
+        toolMode = state.isIn(SHOVEL_MINEABLE) ? ToolModes.SHOVEL :
+                state.isIn(PICKAXE_MINEABLE) ? ToolModes.PICKAXE :
+                        state.isIn(AXE_MINEABLE) ? ToolModes.AXE :
+                                state.isIn(HOE_MINEABLE) ? ToolModes.HOE : ToolModes.DEFAULT;
         if (!world.isClient && state.getHardness(world, pos) != 0.0f) {
             stack.damage(1, miner, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
         }
@@ -72,7 +76,8 @@ public class MultiToolItem extends MultiToolAbstractItem {
         Optional<BlockState> optional3 = Optional.ofNullable(HoneycombItem.WAXED_TO_UNWAXED_BLOCKS.get().get(blockState.getBlock())).map(block -> block.getStateWithProperties(blockState));
         ItemStack itemStack = context.getStack();
         Optional<BlockState> optional4 = Optional.empty();
-        if (config.stripping) {
+        if (config.strippingConfig == ToolControls.BOTH || (config.strippingConfig == ToolControls.RIGHT_CLICK ? !playerEntity.isSneaking() :
+                config.strippingConfig == ToolControls.SHIFT_RIGHT_CLICK ? playerEntity.isSneaking() : false)) {
             if (optional.isPresent()) {
                 world.playSound(playerEntity, blockPos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0f, 1.0f);
                 optional4 = optional;
@@ -93,12 +98,13 @@ public class MultiToolItem extends MultiToolAbstractItem {
                 if (playerEntity != null) {
                     itemStack.damage(1, playerEntity, p -> p.sendToolBreakStatus(context.getHand()));
                 }
-                toolMode = "isAxe";
+                toolMode = ToolModes.AXE;
                 return ActionResult.success(world.isClient);
             }
         }
         //Hoe functionality
-        if (config.pathMaking ? (config.SwapShiftRightClickAndRightClickFunctions == playerEntity.isSneaking() && config.tilling) : config.tilling) {
+        if (config.tillingConfig == ToolControls.BOTH || (config.tillingConfig == ToolControls.RIGHT_CLICK ? !playerEntity.isSneaking() :
+                config.tillingConfig == ToolControls.SHIFT_RIGHT_CLICK ? playerEntity.isSneaking() : false)) {
             Pair<Predicate<ItemUsageContext>, Consumer<ItemUsageContext>> pair = TILLING_ACTIONS.get(world.getBlockState(blockPos = context.getBlockPos()).getBlock());
             if (pair == null) return ActionResult.PASS;
             Predicate<ItemUsageContext> predicate = pair.getFirst();
@@ -111,12 +117,13 @@ public class MultiToolItem extends MultiToolAbstractItem {
                         context.getStack().damage(1, playerEntity, p -> p.sendToolBreakStatus(context.getHand()));
                     }
                 }
-                toolMode = "isHoe";
+                toolMode = ToolModes.HOE;
                 return ActionResult.success(world.isClient);
             }
         }
         //Shovel Functionality
-        else if (config.pathMaking) {
+        if (config.flatteningConfig == ToolControls.BOTH || (config.flatteningConfig == ToolControls.RIGHT_CLICK ? !playerEntity.isSneaking() :
+                config.flatteningConfig == ToolControls.SHIFT_RIGHT_CLICK ? playerEntity.isSneaking() : false)) {
             if (context.getSide() != Direction.DOWN) {
                 BlockState blockState2 = PATH_STATES.get(blockState.getBlock());
                 BlockState blockState3 = null;
@@ -137,7 +144,7 @@ public class MultiToolItem extends MultiToolAbstractItem {
                             context.getStack().damage(1, playerEntity, p -> p.sendToolBreakStatus(context.getHand()));
                         }
                     }
-                    toolMode = "isShovel";
+                    toolMode = ToolModes.SHOVEL;
                     return ActionResult.success(world.isClient);
                 }
                 return ActionResult.PASS;
@@ -148,10 +155,10 @@ public class MultiToolItem extends MultiToolAbstractItem {
 
     //public String getToolMode() {
     //    AttackBlockCallback.EVENT.register((player, world1, hand, pos, direction)-> {
-    //        toolMode = (world1.getBlockState(pos).isIn(BlockTags.SHOVEL_MINEABLE)) ? "isShovel" :
-    //                (world1.getBlockState(pos).isIn(BlockTags.PICKAXE_MINEABLE)) ? "isPickaxe" :
-    //                        (world1.getBlockState(pos).isIn(BlockTags.AXE_MINEABLE)) ? "isAxe" :
-    //                                (world1.getBlockState(pos).isIn(BlockTags.HOE_MINEABLE)) ? "isHoe" : "default";
+    //        toolMode = (world1.getBlockState(pos).isIn(BlockTags.SHOVEL_MINEABLE)) ? ToolModes.SHOVEL :
+    //                (world1.getBlockState(pos).isIn(BlockTags.PICKAXE_MINEABLE)) ? ToolModes.PICKAXE :
+    //                        (world1.getBlockState(pos).isIn(BlockTags.AXE_MINEABLE)) ? ToolModes.AXE :
+    //                                (world1.getBlockState(pos).isIn(BlockTags.HOE_MINEABLE)) ? ToolModes.HOE : ToolModes.DEFAULT;
     //        return ActionResult.SUCCESS;
     //    });
     //    return toolMode;

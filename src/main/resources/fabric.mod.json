@@ -22,7 +22,7 @@
       "net.Mystery2099.mystmultitoolmod.MystMultiToolMod"
     ],
     "client": [
-      "net.Mystery2099.mystmultitoolmod.MystMultiToolClientMod"
+      "net.Mystery2099.mystmultitoolmod.MystMultiToolModClient"
     ],
     "modmenu": [
       "net.Mystery2099.mystmultitoolmod.config.MystMultiToolConfigMenu"

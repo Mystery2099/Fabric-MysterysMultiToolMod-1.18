@@ -4,22 +4,38 @@ import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import net.Mystery2099.mystmultitoolmod.MystMultiToolMod;
+import net.Mystery2099.mystmultitoolmod.util.enums.DefaultToolModel;
+import net.Mystery2099.mystmultitoolmod.util.enums.ToolControls;
 
 @Config(name = MystMultiToolMod.MOD_ID)
 public class ModConfig implements ConfigData {
+    //Old Config
+    //@ConfigEntry.Category("multiToolModel")
+    //public boolean animatedToolModel = false;
+    //@ConfigEntry.Category("multiToolModel")
+    //public boolean dynamicToolModel = true;
+    //
+    //@ConfigEntry.Category("multiToolFunctionality")
+    //public boolean stripping = true;
+    //@ConfigEntry.Category("multiToolFunctionality")
+    //public boolean tilling = true;
+    //@ConfigEntry.Category("multiToolFunctionality")
+    //public boolean flattening = true;
+    //@ConfigEntry.Category("multiToolFunctionality")
+    //public boolean SwapShiftRightClickAndRightClickFunctions = false;
+
+
+    //New Config
     @ConfigEntry.Category("multiToolModel")
-    public boolean animatedToolModel = false;
+    public DefaultToolModel defaultToolModel = DefaultToolModel.HAMMER;
     @ConfigEntry.Category("multiToolModel")
     public boolean dynamicToolModel = true;
     @ConfigEntry.Category("multiToolFunctionality")
-    public boolean stripping = true;
+    public ToolControls strippingConfig = ToolControls.BOTH;
     @ConfigEntry.Category("multiToolFunctionality")
-    public boolean tilling = true;
+    public ToolControls tillingConfig = ToolControls.RIGHT_CLICK;
     @ConfigEntry.Category("multiToolFunctionality")
-    public boolean pathMaking = true;
-    @ConfigEntry.Category("multiToolFunctionality")
-    public boolean SwapShiftRightClickAndRightClickFunctions = false;
+    public ToolControls flatteningConfig = ToolControls.SHIFT_RIGHT_CLICK;
 
-
-    //Add if statement for showing shiftRightClickToTill only if tilling  & pathmaking are true
+    //fix defaultToolModel && dynamicToolModel not working!
 }

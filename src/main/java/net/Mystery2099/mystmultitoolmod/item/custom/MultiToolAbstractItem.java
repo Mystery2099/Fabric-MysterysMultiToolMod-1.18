@@ -3,7 +3,7 @@ package net.Mystery2099.mystmultitoolmod.item.custom;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.mojang.datafixers.util.Pair;
-import net.Mystery2099.mystmultitoolmod.util.ModBlockTags;
+import net.Mystery2099.mystmultitoolmod.util.tags.ModBlockTags;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.*;
 import net.minecraft.entity.EquipmentSlot;
