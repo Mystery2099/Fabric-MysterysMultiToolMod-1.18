@@ -37,5 +37,9 @@ public class ModConfig implements ConfigData {
     @ConfigEntry.Category("multiToolFunctionality")
     public ToolControls flatteningConfig = ToolControls.SHIFT_RIGHT_CLICK;
 
-    //fix defaultToolModel && dynamicToolModel not working!
+    //TO-DO LIST
+    //Add config stuff to en_us.json
+    //Add advancements
+    //Possibly add configurable durability-Lowest is default, highest is 5 times default or give only 2 options which would be 5 times default
+    //Possibly add configurable tool attack speed and damage
 }
