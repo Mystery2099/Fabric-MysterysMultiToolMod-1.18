@@ -35,6 +35,5 @@ public class MystMultiToolModClient implements ClientModInitializer {
                     (mConfig.defaultToolModel == DefaultToolModel.HOE &&
                             (tool.getToolMode() == ToolModes.DEFAULT || !mConfig.dynamicToolModel)) ? 1 : 0);
         }
-        //testing
     }
 }
